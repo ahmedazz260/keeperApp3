@@ -6,7 +6,12 @@ function CreateArea(props) {
     content: ""
   });
 
-  function handleChange() {}
+  function handleChange(event) {
+    const { value, name } = event.target;
+    setInput((prevValue) => {
+      return { ...prevValue, [name]: value };
+    });
+  }
   return (
     <div>
       <form>
@@ -26,6 +31,10 @@ function CreateArea(props) {
         <button
           onClick={(event) => {
             props.onAdd(input);
+            setInput({
+              title: "",
+              content: ""
+            });
             event.preventDefault();
           }}
         >

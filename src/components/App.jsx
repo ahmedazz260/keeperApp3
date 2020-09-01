@@ -7,6 +7,8 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(newNote) {
+    console.log(notes);
+
     setNotes((prevNotes) => {
       return [newNote, ...prevNotes];
     });
@@ -23,7 +25,13 @@ function App() {
       <Header />
       <CreateArea onAdd={addNote} />
       {notes.map((note, index) => (
-        <Note key={1} title="Note title" content="Note content" />
+        <Note
+          key={index}
+          id={index}
+          title={note.title}
+          content={note.content}
+          onDel={deleteNote}
+        />
       ))}
       <Footer />
     </div>
